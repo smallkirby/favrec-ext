@@ -36,7 +36,7 @@ export const Popup: React.FC = () => {
   }, []);
 
   return (
-    <div className="rounded-lg">
+    <div className="rounded-lg min-w-[20rem]">
       <Header user={user} />
       <div className="p-2">{!user ? <LoginInstruction /> : <Record />}</div>
     </div>

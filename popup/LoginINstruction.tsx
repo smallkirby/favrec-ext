@@ -4,7 +4,7 @@ export const LoginInstruction: React.FC = () => {
   return (
     <div>
       <h2 className="text-lg font-bold">You must sign in.</h2>
-      <div className="p-1">
+      <div className="p-1 py-2">
         <ul className="list-disc list-inside">
           <li>
             Sign in to{' '}
