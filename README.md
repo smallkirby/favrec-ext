@@ -4,6 +4,14 @@
 
 Chrome extension for [FavRec](https://github.com/smallkirby/favrec).
 
+## Development
+
+```bash
+# You have to run Firebase emulators beforehand
+npm run ci
+npr run build:chrome:dev
+```
+
 ---
 
 Forked from [hiterm/web-ext-react-template](https://github.com/hiterm/web-ext-react-template)
