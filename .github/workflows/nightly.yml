@@ -32,15 +32,14 @@ jobs:
         run: npm ci --no-audit
 
       - name: Run build
-        run: npm run build
+        run: npm run build:chrome
 
       - name: Package extensions
         run: |
-          npm run package:chrome
           cd dist-chrome
           zip -r -FS ../favrec-ext.chrome.zip *
 
-      - name: Release Firefox
+      - name: Release Chrome
         uses: WebFreak001/deploy-nightly@v1.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
