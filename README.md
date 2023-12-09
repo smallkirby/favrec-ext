@@ -1,6 +1,7 @@
 # Browser Extension for FavRec
 
 ![Build / Lint](https://github.com/smallkirby/favrec-ext/actions/workflows/build-lint.yml/badge.svg)
+![Nightly Release](https://github.com/smallkirby/favrec-ext/actions/workflows/nightly.yml/badge.svg)
 
 Chrome extension for [FavRec](https://github.com/smallkirby/favrec).
 

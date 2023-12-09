@@ -36,13 +36,12 @@ jobs:
 
       - name: Package extensions
         run: |
-          cd dist-chrome
-          zip -r -FS ../favrec-ext.chrome.zip *
+          cd dist-chrome && \
+          zip -r -FS ../favrec-ext.chrome.zip * && \
+          cd ..
 
       - name: Release Chrome
-        uses: WebFreak001/deploy-nightly@v1.1.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: WebFreak001/deploy-nightly@v3.0.0
         with:
           upload_url: https://uploads.github.com/repos/smallkirby/favrec-ext/releases/133279364/assets{?name,label}
           asset_path: ./favrec-ext.chrome.zip
