@@ -5,6 +5,7 @@ import { FirebaseUser } from '../types/FirebaseUser';
 import { LoginInstruction } from './LoginINstruction';
 import { Header } from './Header';
 import { auth } from '../background/lib/firebase/app';
+import { Record } from './Record';
 
 export const Popup: React.FC = () => {
   const [user, setUser] = useState<FirebaseUser | null | undefined>(undefined);
@@ -35,11 +36,9 @@ export const Popup: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-[18rem] min-w-[20rem] rounded-lg">
+    <div className="rounded-lg">
       <Header user={user} />
-      <div className="p-2">
-        {!user ? <LoginInstruction /> : <div>You are {user?.displayName}</div>}
-      </div>
+      <div className="p-2">{!user ? <LoginInstruction /> : <Record />}</div>
     </div>
   );
 };

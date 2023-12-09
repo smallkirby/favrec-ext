@@ -3,7 +3,11 @@ module.exports = {
   mode: 'jit',
   content: ['./popup/**/*.{js,jsx,ts,tsx,html}'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        cute: ['Pacifico', 'cursive'],
+      },
+    },
   },
   plugins: [require('daisyui')],
 };

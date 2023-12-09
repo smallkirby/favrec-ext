@@ -6,6 +6,7 @@ import {
 } from 'firebase/auth';
 import browser from 'webextension-polyfill';
 import { signInWithCredential } from 'firebase/auth';
+import { connectFunctionsEmulator, getFunctions } from 'firebase/functions';
 
 // NOTE: This is not secret.
 const firebaseConfig = {
@@ -17,8 +18,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const functions = getFunctions(app, 'asia-northeast1');
 if (process.env.NODE_ENV === 'development') {
   connectAuthEmulator(auth, 'http://localhost:9099');
+  connectFunctionsEmulator(functions, 'localhost', 5001);
 }
 
 type MessageType = {
@@ -68,4 +71,4 @@ const initFirebase = () => {
   browser.runtime.onMessage.addListener(onSigninRequest);
 };
 
-export { initFirebase, auth };
+export { initFirebase, auth, functions };

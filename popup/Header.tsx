@@ -1,6 +1,7 @@
 import React from 'react';
 import { FirebaseUser } from '../types/FirebaseUser';
 import { auth } from '../background/lib/firebase/app';
+import { Favorite } from '@mui/icons-material';
 
 type Props = {
   user: FirebaseUser | null | undefined;
@@ -13,6 +14,16 @@ export const Header: React.FC<Props> = ({ user }: Props) => {
 
   return (
     <div className="navbar bg-base-100 flex items-center border-b-[1px] border-gray-600 w-full">
+      <div
+        className="group flex cursor-pointer items-center border-none py-0 pl-1 mr-6
+        font-cute text-pink-500 duration-300 hover:text-pink-800 dark:bg-slate-800"
+      >
+        <h1 className="mr-1 text-lg">FAVREC</h1>
+        <Favorite
+          sx={{ width: 20, height: 20 }}
+          className="pb-[1px] group-hover:animate-ping"
+        />
+      </div>
       <div className="flex-1 justify-end">
         {user ? (
           <a
