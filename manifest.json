@@ -10,9 +10,21 @@
   "permissions": ["tabs"],
   "action": {
     "default_popup": "popup/popup.html",
+    "default_title": "FavRec",
     "default_icon": {
       "16": "icons/icon-16.png",
       "32": "icons/icon-32.png"
     }
-  }
+  },
+  "background": {
+    "service_worker": "background/index.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://fav.smallkirby.com/ext*", "http://localhost:*/ext*"],
+      "js": ["content_script/index.js"],
+      "run_at": "document_end"
+    }
+  ]
 }

@@ -15,6 +15,10 @@ builder.addBuildFile('popup/index.tsx');
 builder.addStaticFile('popup/popup.html');
 builder.addStaticFile('popup/index.css');
 
+builder.addBuildFile('background/index.ts');
+
+builder.addBuildFile('content_script/index.ts');
+
 builder.addStaticDir('icons');
 
 builder.build();
