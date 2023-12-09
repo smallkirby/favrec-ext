@@ -26,7 +26,7 @@ export const Record: React.FC = () => {
           duration: 3,
         });
       } else {
-        console.log('[FAVREC] record success');
+        console.info('[FAVREC] record success');
         await messageApi.open({
           type: 'success',
           content: 'Record Success',

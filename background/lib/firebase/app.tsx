@@ -1,11 +1,10 @@
 import { initializeApp } from 'firebase/app';
 import {
-  GithubAuthProvider,
   connectAuthEmulator,
   getAuth,
+  signInWithCustomToken,
 } from 'firebase/auth';
 import browser from 'webextension-polyfill';
-import { signInWithCredential } from 'firebase/auth';
 import { connectFunctionsEmulator, getFunctions } from 'firebase/functions';
 
 // NOTE: This is not secret.
@@ -52,10 +51,13 @@ const onSigninRequest = async (msg: MessageType) => {
       console.info('[FAVREC] user is already signed in');
       return;
     }
-    const cred = GithubAuthProvider.credential(msg.data as string);
-    await signInWithCredential(auth, cred).catch((err) => {
-      console.error(err);
-    });
+    await signInWithCustomToken(auth, msg.data as string)
+      .then((res) => {
+        console.info('[FAVREC] signInWithCustomToken', res);
+      })
+      .catch((err) => {
+        console.error('[FAVREC] signInWithCustomToken', err);
+      });
   } else {
     console.error(
       `[FAVREC] onSigninRequest: unknown message type: ${msg.type}`
