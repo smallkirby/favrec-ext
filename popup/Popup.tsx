@@ -1,5 +1,6 @@
 import React from 'react';
 import browser from 'webextension-polyfill';
+import './index.css';
 
 export const Popup: React.FC = () => {
   const handleClick = async (): Promise<void> => {
@@ -7,5 +8,9 @@ export const Popup: React.FC = () => {
   };
 
   // a button to open example.com
-  return <button onClick={handleClick}>Button</button>;
+  return (
+    <button onClick={handleClick} className="bg-red-500">
+      Button
+    </button>
+  );
 };

@@ -2,6 +2,7 @@ import * as chokidar from 'chokidar';
 import { build, BuildOptions } from 'esbuild';
 import { promises as fs } from 'fs';
 import path from 'path';
+import style from 'esbuild-style-plugin';
 
 type Browser = 'firefox' | 'chrome';
 
@@ -105,6 +106,7 @@ export class Builder {
       await fs.copyFile(file, distPath(file, targetBrowser));
     }
   }
+
   async copyStaticDir(dir: string, targetBrowser: Browser) {
     await fs.mkdir(distPath(dir, targetBrowser), {
       recursive: true,
@@ -148,6 +150,14 @@ export class Builder {
             ? '"development"'
             : '"production"',
         },
+        plugins: [
+          style({
+            postcss: {
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+              plugins: [require('tailwindcss'), require('autoprefixer')],
+            },
+          }),
+        ],
       });
     });
     this.staticFiles.forEach((file) => {
