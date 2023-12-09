@@ -1,6 +1,6 @@
 # Browser Extension for FavRec
 
-Chrome and Firefox extension for [FavRec](https://github.com/smallkirby/favrec).
+Chrome extension for [FavRec](https://github.com/smallkirby/favrec).
 
 ---
 
